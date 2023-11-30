@@ -1,6 +1,7 @@
 import numpy
 import jax
 import jax.numpy as np
+from jax.config import config; config.update("jax_enable_x64", True)
 
 def norm2(z):
     res = sum(z**2)
@@ -63,6 +64,6 @@ for i in range(1):
     G, H = leastsquares(Cres, Gres, Hres)
 
     G_ad = G_norm2(Cres, Gres)
-    print("G_ad - G: ", sum(G_ad - G))
+    print("G_ad - G: ", (G_ad - G))
     H_ad = H_norm2(Cres, Gres, Hres)
-    print("H_ad - H: ", sum(H_ad - H))
+    print("H_ad - H: ", (H_ad - H))
